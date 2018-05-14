@@ -1,0 +1,15 @@
+{
+    "type": "composer-plugin",
+    "name": "tallpaul/magesrc",
+    "require": {
+        "composer-plugin-api": "^1.0"
+    },
+    "autoload": {
+    "psr-4": {
+        "TallPaul\\": "src"
+        }
+    },
+    "extra": {
+        "class": "TallPaul\\MageSrc"
+    }
+}
