@@ -36,6 +36,7 @@ class MageSrc implements PluginInterface, EventSubscriberInterface
       $config = $this->composer->getConfig();
       /*TODO: find a better way of getting this! */
       $root_path = realpath($config->get('vendor-dir')."/..");
+      echo "root: ".$root_path."\n";
       $options = $this->composer->getPackage()->getExtra();
       $extensionInstaller = new ExtensionInstaller($root_path,$options);
       $extensionInstaller->runInstaller();
