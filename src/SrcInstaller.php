@@ -61,7 +61,12 @@ class SrcInstaller {
               unlink($target);
             }
             echo "-";
-            $filesystem->relativeSymlink($src,$target);
+            try {
+              $filesystem->relativeSymlink($src,$target);
+            } catch (Exception $e) {
+              echo $e->getMessage();
+              echo "\n";
+            }
           }
         }
 
