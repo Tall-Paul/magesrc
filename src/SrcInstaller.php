@@ -8,8 +8,8 @@ class SrcInstaller {
     protected $dest_root;
 
     public function __construct($root_path,$options){
-      $this->src_root = $root_path."/". $options['magento-src-dir'];
-      $this->dest_root = $root_path."/".$options['magento-root-dir'];
+      $this->src_root = realpath($root_path."/". $options['magento-src-dir']);
+      $this->dest_root = realpath($root_path."/".$options['magento-root-dir']);
       $this->src_path = $options['magento-src-dir'];
     }
 
@@ -52,6 +52,7 @@ class SrcInstaller {
             continue;
           } else {
             $filesystem->relativeSymlink($src,$target);
+            echo "-";
             $symlinked[] = $filepath;
           }
         } else {
@@ -59,13 +60,14 @@ class SrcInstaller {
             if (file_exists($target)){
               unlink($target);
             }
+            echo "-";
             $filesystem->relativeSymlink($src,$target);
           }
         }
 
 
        }
-
+       echo "\n";
     }
 }
 

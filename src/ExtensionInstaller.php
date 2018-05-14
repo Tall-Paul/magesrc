@@ -8,8 +8,8 @@ class ExtensionInstaller {
     protected $dest_root;
 
     public function __construct($root_path,$options){
-      $this->src_root = $root_path."/". $options['magento-extension-dir'];
-      $this->dest_root = $root_path."/".$options['magento-root-dir'];
+      $this->src_root = realpath($root_path."/". $options['magento-extension-dir']);
+      $this->dest_root = realpath($root_path."/".$options['magento-root-dir']);
     }
 
     public function runInstaller(){
